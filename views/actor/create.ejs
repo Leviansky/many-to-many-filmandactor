@@ -1,0 +1,41 @@
+<%- include('../header')%>
+    <div class="container">
+        <div class="wrapper-create">
+            <form action="create" method="post" class="form-create">
+                <h3>Actor Name</h3>
+                <input type="text" name="name" required>
+                <h3>Link image (URL)</h3>
+                <input type="text" name="image" required>
+                <h3>Country</h3>
+                <input type="text" name="country" required>
+                <h3>Birth (Year)</h3>
+                <input type="text" name="birthYear" required>
+                <h3>Height</h3>
+                <input type="text" name="height" required>
+                <h3>Select film</h3>
+                <select id=filmId" name="filmId">
+                    <option value="">No one</option>
+                    <% films.forEach(film => { %>
+                        <option value="<%=film.id%>"><%=film.name%></option>
+                    <% }) %>
+                </select>
+                <button id="addActorButton" class="btn outline">ADD ACTOR</button>
+                <script>
+                    const addActorButton = document.getElementById('addActorButton');
+                    const filmDropdown = document.getElementById('filmId');
+                
+                    addActorButton.addEventListener('click', function() {
+                        const selectedActorId = filmDropdown.value;
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'filmId';
+                        hiddenInput.value = selectedActorId;
+                        const form = document.querySelector('.form-create');
+                        form.appendChild(hiddenInput);
+                    });
+                </script>
+                
+            </form>
+        </div>
+    </div>
+</html>

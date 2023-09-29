@@ -1,0 +1,67 @@
+<%- include('header')%>
+    <div class="container">
+        <div class="wrapper">
+          <div class="banner-poster">
+              <% films.forEach((film,index) => { %>
+                <%if(index<8) { %>
+                  <a href="film/<%=film.id%>">
+                    <div class="poster">
+                        <img src="<%=film.poster%>" alt="<%=film.name%>"/>
+                    </div>
+                  </a>
+                <%}%>
+              <% }) %>
+          </div>
+          <h1> FILMS</h1>
+          <p>Ready for Movie Night? Explore All the Details Right Here! 🎬</p>
+         </div>
+         <div class="button-wrapper"> 
+           <button onclick="goToAddFilm()" class="btn outline">ADD FILM</button>
+           <script>
+            function goToAddFilm() {
+              window.location.href = "http://localhost:3000/films/create";
+            }
+            </script>
+           <button onclick="goToAllFilms()" class="btn fill">MORE FILM</button>
+           <script>
+            function goToAllFilms() {
+              window.location.href = "http://localhost:3000/films";
+            }
+            </script>
+         </div>
+           </div>
+       </div>
+    
+       <div class="container">
+        <div class="wrapper">
+            <div class="banner-poster">
+                <% actors.forEach((actor,index) => { %>
+                  <%if(index<8) { %>
+                    <a href="actor/<%=actor.id%>">
+                      <div class="poster">
+                          <img src="<%=actor.image%>" alt="<%=actor.name%>"/>
+                      </div>
+                    </a>
+                  <%}%>
+                <% }) %>
+            </div>
+          <h1> ACTORS</h1>
+          <p>"Curious About Your Favorite Actor? Discover Their Story Here! 🌟🎥</p>
+         </div>
+         <div class="button-wrapper"> 
+         <button onclick="goToAddActor()" class="btn outline">ADD ACTOR</button>
+         <script>
+          function goToAddActor() {
+            window.location.href = "http://localhost:3000/actors/create";
+          }
+          </script>
+           <button onclick="goToAllActors()" class="btn fill">MORE ACTOR</button>
+           <script>
+            function goToAllActors() {
+              window.location.href = "http://localhost:3000/actors";
+            }
+            </script>
+         </div>
+           </div>
+       </div>
+</html>

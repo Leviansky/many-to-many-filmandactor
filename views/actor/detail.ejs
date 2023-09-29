@@ -1,0 +1,51 @@
+<%- include('../header')%>
+    <div class="container">
+        <div class="wrapper-detail">
+            <div class="wrapper-left">
+                <div class="poster-detail">
+                    <img src="<%= actor.image %>" alt="<%= actor.name %>" class="img-detail"/>
+                </div>
+            </div>
+            <div class="wrapper-right">
+                <div class="content-top">
+                    <div class="wrapper-left-content">
+                        <h1><%=actor.name%> - <%=actor.country%></h1>
+                        <h2><%=actor.birthYear%> - <%=actor.height%></h2>
+                        <h2>FILM :</h2>
+                    </div>
+                    <div class="wrapper-right-content">
+                        <div class="button-wrapper"> 
+                            <button onclick="goToUpdate()" class="btn outline">UPDATE IT!</button>
+                            <script>
+                             function goToUpdate() {
+                               window.location.href = "http://localhost:3000/actors/update/<%=actor.id%>";
+                             }
+                             </script>
+                            <button onclick="goToDelete()" class="btn fill">DELETE IT!</button>
+                            <script>
+                             function goToDelete() {
+                               window.location.href = "http://localhost:3000/actors/delete/<%=actor.id%>";
+                             }
+                             </script>
+                          </div>
+                    </div>
+                </div>
+                <div class="content-bottom">
+                    <% if (actor.films !== null && Array.isArray(actor.films)) { %>
+                        <%actor.films.forEach(film => {%>
+                            <div class="poster">
+                                <a href="http://localhost:3000/film/<%=film.id%>">
+                                    <img src="<%= film.poster %>" alt="<%= film.name %>"/>
+                                </a>
+                            </div>
+                        <%})%>
+                    <%} else {%>
+                        <div class="content-nobody">
+                            <h3>Nobody</h3>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

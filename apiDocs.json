@@ -1,0 +1,360 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API Film",
+      "description": "Tugas employee Fahlevi-dev",
+      "version": "1.0.0"
+    },
+    "server": [
+      {
+        "url": "http://localhost:3000",
+        "description": "localhost"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Films Manager",
+        "description": "CRUD Films"
+      },
+      {
+        "name": "Actors Manager",
+        "description": "CRUD Actors"
+      },{
+        "name": "Film - Actors Manager",
+        "description": "Get filmactor"
+      },{
+        "name": "Actor - Films Manager",
+        "description": "Get actorfilm"
+      }
+    ],
+    "paths": {
+      "/films": {
+        "get": {
+          "tags": ["Films Manager"],
+          "summary": "Get All Films",
+          "description": "Get a list of all films.",
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/films/create": {
+        "post": {
+          "tags": ["Films Manager"],
+          "summary": "Post One Film",
+          "description": "",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Interstellar"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "example": "https://i.pinimg.com/236x/f0/0e/f4/f00ef4ef28062a3ffe32c80cfa039c86.jpg"
+                    },
+                    "director": {
+                      "type": "string",
+                      "example": "Christopher Nolan"
+                    },
+                    "releaseYear": {
+                      "type": "integer",
+                      "example": 2013
+                    },
+                    "company": {
+                      "type": "string",
+                      "example": "Paramount Pictures"
+                    },
+                    "actorId": {
+                      "type": "integer",
+                      "example": null
+                    }
+                  },
+                  "required": ["name", "director", "releaseYear", "company", "actorId"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/films/delete/{id}": {
+        "get": {
+          "tags": ["Films Manager"],
+          "summary": "Delete One Film",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Film"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/films/update/{id}": {
+        "post": {
+          "tags": ["Films Manager"],
+          "summary": "Update One Film",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Film"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "example": "Interstellar"
+                      },
+                      "poster": {
+                        "type": "string",
+                        "example": "https://i.pinimg.com/236x/f0/0e/f4/f00ef4ef28062a3ffe32c80cfa039c86.jpg"
+                      },
+                      "director": {
+                        "type": "string",
+                        "example": "Christopher Nolan"
+                      },
+                      "releaseYear": {
+                        "type": "integer",
+                        "example": 2014
+                      },
+                      "company": {
+                        "type": "string",
+                        "example": "Paramount Pictures"
+                      },
+                      "actorId": {
+                        "type": "integer",
+                        "example": 1
+                      }
+                    },
+                    "required": ["name", "director", "releaseYear", "company", "actorId"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/actors": {
+        "get": {
+          "tags": ["Actors Manager"],
+          "summary": "Get All Actors",
+          "description": "Get a list of all actors.",
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/actors/create": {
+        "post": {
+          "tags": ["Actors Manager"],
+          "summary": "Post One Actor",
+          "description": "",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Matthew McConaughey"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "https://i.pinimg.com/236x/50/01/37/50013781a0e81da078a2d238a10bf59f.jpg"
+                    },
+                    "country": {
+                      "type": "string",
+                      "example": "USA"
+                    },
+                    "birthYear": {
+                      "type": "integer",
+                      "example": 1969
+                    },
+                    "height": {
+                      "type": "integer",
+                      "example": 180
+                    },
+                    "filmId": {
+                      "type": "integer",
+                      "example": null
+                    }
+                  },
+                  "required": ["name", "country", "birthYear", "height", "filmId"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/actors/delete/{id}": {
+        "get": {
+          "tags": ["Actors Manager"],
+          "summary": "Delete One Actor",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Actor"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/actors/update/{id}": {
+        "post": {
+          "tags": ["Actors Manager"],
+          "summary": "Update One Actor",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Actor"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                    "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "Matthew McConaughey"
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "https://i.pinimg.com/236x/50/01/37/50013781a0e81da078a2d238a10bf59f.jpg"
+                    },
+                    "country": {
+                      "type": "string",
+                      "example": "USA"
+                    },
+                    "birthYear": {
+                      "type": "integer",
+                      "example": 1969
+                    },
+                    "height": {
+                      "type": "integer",
+                      "example": 182
+                    },
+                    "filmId": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  },
+                  "required": ["name", "country", "birthYear", "height", "filmId"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/film/{filmId}": {
+        "get": {
+          "tags": ["Film - Actors Manager"],
+          "summary": "Get Film - Actor",
+          "description": "Get a detail film - actor.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "filmId",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Film"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/actor/{actorId}": {
+        "get": {
+          "tags": ["Actor - Films Manager"],
+          "summary": "Get Actor - Film",
+          "description": "Get a detail actor - film.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "actorId",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Actor"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    }
+  }

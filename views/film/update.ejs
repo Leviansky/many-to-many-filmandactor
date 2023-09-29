@@ -1,0 +1,40 @@
+<%- include('../header')%>
+    <div class="container">
+        <div class="wrapper-create">
+            <form action="/films/update/<%=film.id%>" method="post"">
+                <h3>Film Name</h3>
+                <input type="text" name="name" value="<%=film.name%>" required>
+                <h3>Link poster (URL)</h3>
+                <input type="text" name="poster" value="<%=film.poster%>" required>
+                <h3>Director</h3>
+                <input type="text" name="director" value="<%=film.director%>" required>
+                <h3>Release (Year)</h3>
+                <input type="text" name="releaseYear" value="<%=film.releaseYear%>" required>
+                <h3>Company Name</h3>
+                <input type="text" name="company" value="<%=film.company%>" required>
+                <h3>Select actor</h3>
+                <select id="actorId" name="actorId">
+                    <option value="">No one</option>
+                    <% actors.forEach(actor => { %>
+                        <option value="<%=actor.id%>"><%=actor.name%></option>
+                    <% }) %>
+                </select>
+                <button id="updateFilmButton" type="submit" value="submit" class="btn outline">UPDATE FILM!</button>
+                <script>
+                    const updateFilmButton = document.getElementById('updateFilmButton');
+                    const actorDropdown = document.getElementById('actorId');
+                
+                    updateFilmButton.addEventListener('click', function() {
+                        const selectedActorId = actorDropdown.value;
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'actorId';
+                        hiddenInput.value = selectedActorId;
+                        const form = document.querySelector('.form-create');
+                        form.appendChild(hiddenInput);
+                    });
+                </script>
+            </form>
+        </div>
+    </div>
+</html>

@@ -1,0 +1,14 @@
+<%- include('../header')%>
+<div class="container-film">
+    <div class="wrapper-film">
+        <div class="film-grid">
+            <% films.forEach((film, index) => { %>
+                <a href="film/<%= film.id %>">
+                    <div class="poster">
+                    <img src="<%= film.poster %>" alt="<%= film.name %>"/>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+   </div>
+</html>
