@@ -12,13 +12,7 @@
                 <input type="text" name="releaseYear" required>
                 <h3>Company Name</h3>
                 <input type="text" name="company" required>
-                <h3>Select actor</h3>
-                <select id="actorId" name="actors">
-                    <option value="">No one</option>
-                    <% actors.forEach(actor => { %>
-                        <option value="<%=actor.id%>"><%=actor.name%></option>
-                    <% }) %>
-                </select>
+                <div class="margin"></div>
                 <button id="addFilmButton" class="btn outline">ADD FILM</button>
                 <script>
                     const addFilmButton = document.getElementById('addFilmButton');

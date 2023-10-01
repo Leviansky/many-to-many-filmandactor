@@ -7,12 +7,10 @@ class filmActorController  {
             let result = await filmActors.findAll({
                 where: {
                     filmId:filmId
-                },
-                order: [
-                    ['id', 'desc']
-                ]
+                }
             })
-            if(result[0].actorId !== null) {
+            // res.json(result);
+            if (result.length>0) {
                 result = await filmActors.findAll({
                     where: {filmId:filmId},
                     include: [film, actor]

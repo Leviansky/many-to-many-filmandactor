@@ -324,3 +324,7 @@ option {
     justify-content: center;
     align-items: center;
 }
+
+.margin {
+    margin: 15px;
+}

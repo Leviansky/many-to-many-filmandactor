@@ -26,19 +26,10 @@ class filmController {
 
     static async create(req,res) {
         try {
-            let { name, poster, director, releaseYear, company, actorId } = req.body;
+            let { name, poster, director, releaseYear, company } = req.body;
             let result = await film.create({
-                name, poster, director, releaseYear, company, actorId
+                name, poster, director, releaseYear, company
             })
-            let filmId = result.id;
-            if(actorId === '' || actorId === null) {
-                actorId = null;
-            } else {
-                actorId = +actorId;
-            }
-            let resultFilmActor = await filmActors.create({
-                filmId, actorId
-            }) 
             const acceptHeader = req.get("Accept");
             if (acceptHeader && acceptHeader.includes("text/html")) {
                 res.redirect('/films');
