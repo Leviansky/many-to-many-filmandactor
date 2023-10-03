@@ -4,7 +4,7 @@
           <div class="banner-poster">
               <% films.forEach((film,index) => { %>
                 <%if(index<8) { %>
-                  <a href="film/<%=film.id%>">
+                  <a href="films/<%=film.id%>">
                     <div class="poster">
                         <img src="<%=film.poster%>" alt="<%=film.name%>"/>
                     </div>
@@ -37,7 +37,7 @@
             <div class="banner-poster">
                 <% actors.forEach((actor,index) => { %>
                   <%if(index<8) { %>
-                    <a href="actor/<%=actor.id%>">
+                    <a href="actors/<%=actor.id%>">
                       <div class="poster">
                           <img src="<%=actor.image%>" alt="<%=actor.name%>"/>
                       </div>

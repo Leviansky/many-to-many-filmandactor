@@ -19,12 +19,6 @@
       {
         "name": "Actors Manager",
         "description": "CRUD Actors"
-      },{
-        "name": "Film - Actors Manager",
-        "description": "Get filmactor"
-      },{
-        "name": "Actor - Films Manager",
-        "description": "Get actorfilm"
       }
     ],
     "paths": {
@@ -71,10 +65,6 @@
                     "company": {
                       "type": "string",
                       "example": "Paramount Pictures"
-                    },
-                    "actorId": {
-                      "type": "integer",
-                      "example": null
                     }
                   },
                   "required": ["name", "director", "releaseYear", "company", "actorId"]
@@ -82,28 +72,6 @@
               }
             }
           },
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
-      "/films/delete/{id}": {
-        "get": {
-          "tags": ["Films Manager"],
-          "summary": "Delete One Film",
-          "description": "",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "schema": {
-                "type": "integer"
-              },
-              "description": "ID Film"
-            }
-          ],
           "responses": {
             "200": {
               "description": "Success"
@@ -170,6 +138,50 @@
           }
         }
       },
+      "/films/delete/{id}": {
+        "get": {
+          "tags": ["Films Manager"],
+          "summary": "Delete One Film",
+          "description": "",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Film"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/films/{filmId}": {
+        "get": {
+          "tags": ["Films Manager"],
+          "summary": "Get Film - Actor",
+          "description": "Get a detail film - actor.",
+          "parameters": [
+            {
+              "in": "path",
+              "name": "filmId",
+              "schema": {
+                "type": "integer"
+              },
+              "description": "ID Film"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
       "/actors": {
         "get": {
           "tags": ["Actors Manager"],
@@ -213,10 +225,6 @@
                     "height": {
                       "type": "integer",
                       "example": 180
-                    },
-                    "filmId": {
-                      "type": "integer",
-                      "example": null
                     }
                   },
                   "required": ["name", "country", "birthYear", "height", "filmId"]
@@ -231,28 +239,7 @@
           }
         }
       },
-      "/actors/delete/{id}": {
-        "get": {
-          "tags": ["Actors Manager"],
-          "summary": "Delete One Actor",
-          "description": "",
-          "parameters": [
-            {
-              "in": "path",
-              "name": "id",
-              "schema": {
-                "type": "integer"
-              },
-              "description": "ID Actor"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Success"
-            }
-          }
-        }
-      },
+      
       "/actors/update/{id}": {
         "post": {
           "tags": ["Actors Manager"],
@@ -312,19 +299,19 @@
           }
         }
       },
-      "/film/{filmId}": {
+      "/actors/delete/{id}": {
         "get": {
-          "tags": ["Film - Actors Manager"],
-          "summary": "Get Film - Actor",
-          "description": "Get a detail film - actor.",
+          "tags": ["Actors Manager"],
+          "summary": "Delete One Actor",
+          "description": "",
           "parameters": [
             {
               "in": "path",
-              "name": "filmId",
+              "name": "id",
               "schema": {
                 "type": "integer"
               },
-              "description": "ID Film"
+              "description": "ID Actor"
             }
           ],
           "responses": {
@@ -333,10 +320,10 @@
             }
           }
         }
-      },
-      "/actor/{actorId}": {
+      },      
+      "/actors/{actorId}": {
         "get": {
-          "tags": ["Actor - Films Manager"],
+          "tags": ["Actors Manager"],
           "summary": "Get Actor - Film",
           "description": "Get a detail actor - film.",
           "parameters": [

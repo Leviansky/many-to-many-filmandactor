@@ -106,7 +106,7 @@ class actorController {
             }
             const acceptHeader = req.get("Accept");
             if (acceptHeader && acceptHeader.includes("text/html")) {
-                res.redirect(`/actor/${actorId}`);
+                res.redirect(`/actors/${actorId}`);
             } else {
                 result[0] === 1 ? res.json({message: `Update Success`}) : res.json({message: `Update Failed`})
             }

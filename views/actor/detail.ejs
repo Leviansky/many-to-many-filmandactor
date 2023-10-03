@@ -34,7 +34,7 @@
                     <% if (actor.films !== null && Array.isArray(actor.films)) { %>
                         <%actor.films.forEach(film => {%>
                             <div class="poster">
-                                <a href="http://localhost:3000/film/<%=film.id%>">
+                                <a href="http://localhost:3000/films/<%=film.id%>">
                                     <img src="<%= film.poster %>" alt="<%= film.name %>"/>
                                 </a>
                             </div>
